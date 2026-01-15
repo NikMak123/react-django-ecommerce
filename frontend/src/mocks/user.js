@@ -11,7 +11,7 @@ class UserApi {
                 },
             };
 
-            const { data } = await axios.get(`/api/users/profile`, config);
+            const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/api/users/profile`, config);
             return data;
         } catch (error) {
             throw error.response && error.response.data.detail
@@ -28,7 +28,7 @@ class UserApi {
                 },
             };
 
-            const { data } = await axios.post('/api/users/register/', { name, email, password }, config);
+            const { data } = await axios.post(`${process.env.REACT_APP_API_URL}/api/users/register/`, { name, email, password }, config);
             return data;
         } catch (error) {
             throw error.response && error.response.data.detail
@@ -47,7 +47,7 @@ class UserApi {
                 },
             };
 
-            const { data } = await axios.put('/api/users/profile/update', updateData, config);
+            const { data } = await axios.put(`${process.env.REACT_APP_API_URL}/api/users/profile/update`, updateData, config);
             return data;
         } catch (error) {
             throw error.response && error.response.data.detail
@@ -66,7 +66,7 @@ class UserApi {
                 },
             };
 
-            await axios.delete(`/api/users/delete/${userId}`, config);
+            await axios.delete(`${process.env.REACT_APP_API_URL}/api/users/delete/${userId}`, config);
         } catch (error) {
             throw error.response && error.response.data.detail
                 ? error.response.data.detail
@@ -76,7 +76,7 @@ class UserApi {
 
     async login(email, password) {
         try {
-            const { data } = await axios.post('/api/users/login/', {
+            const { data } = await axios.post(`${process.env.REACT_APP_API_URL}/api/users/login/`, {
                 username: email,
                 password: password,
             });

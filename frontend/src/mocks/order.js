@@ -11,7 +11,7 @@ class OrderAPI{
                     Authorization : `Bearer ${token}`,
                 }
             }
-            const {data} = await axios.post(`/api/orders/add/`, order, config);
+            const {data} = await axios.post(`${process.env.REACT_APP_API_URL}/api/orders/add/`, order, config);
             return data;
         } catch (error){
             throw error.response && error.response.data.detail
@@ -30,7 +30,7 @@ class OrderAPI{
                     Authorization : `Bearer ${token}`,
                 },
             }
-            const { data } = await axios.get(`/api/orders/${id}/`,config)
+            const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/api/orders/${id}/`,config)
             return data; 
         } catch (error){
             throw error.response && error.response.data.detail
@@ -50,7 +50,7 @@ class OrderAPI{
             }
 
             const { data } = await axios.put(
-                `/api/orders/${id}/pay/`,
+                `${process.env.REACT_APP_API_URL}/api/orders/${id}/pay/`,
                 paymentResult,
                 config,
             );
@@ -73,7 +73,7 @@ class OrderAPI{
                 },
             }
 
-            const { data } = await axios.get(`/api/orders/myorders/`, config);
+            const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/api/orders/myorders/`, config);
             return data
         } catch (error){
              throw error.response && error.response.data.detail
@@ -94,7 +94,7 @@ class OrderAPI{
                 },
             }
 
-            const { data } = await axios.put(`/api/orders/${order.id}/deliver/`,{},config)
+            const { data } = await axios.put(`${process.env.REACT_APP_API_URL}/api/orders/${order.id}/deliver/`,{},config)
             return data;
         } catch (error){
              throw error.response && error.response.data.detail

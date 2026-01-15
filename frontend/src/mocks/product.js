@@ -3,7 +3,7 @@ import axios from 'axios'
 class ProductApi{
     async getProductList(keyword='',pageNumber=''){
         try{
-            const {data} = await axios.get(`/api/products${keyword}`,{
+            const {data} = await axios.get(`${process.env.REACT_APP_API_URL}/api/products${keyword}`,{
                 params:{
                     page:pageNumber
                 }
@@ -19,7 +19,7 @@ class ProductApi{
 
     async getProductDetails(productId){
         try {
-            const {data} = await axios.get(`/api/products/${productId}`);
+            const {data} = await axios.get(`${process.env.REACT_APP_API_URL}/api/products/${productId}`);
             console.log(data)
             return data
         } catch (error) {
@@ -42,7 +42,7 @@ class ProductApi{
                 },
              }
              const {data} = await axios.post(
-                `/api/products/${productId}/reviews/`,
+                `${process.env.REACT_APP_API_URL}/api/products/${productId}/reviews/`,
                 review,
                 config
              );
@@ -57,7 +57,7 @@ class ProductApi{
 
     async getTopRatedProducts() {
         try {
-            const {data} = await axios.get(`/api/products/top`);
+            const {data} = await axios.get(`${process.env.REACT_APP_API_URL}/api/products/top`);
             return data;
         } catch (error) {
             throw error.response && error.response.data.detail
@@ -69,7 +69,7 @@ class ProductApi{
 
     async getCategory(category){
         try{
-            const{data} = await axios.get(`/api/products/category/${category}/`)
+            const{data} = await axios.get(`${process.env.REACT_APP_API_URL}/api/products/category/${category}/`)
             console.log(data)
             return data
         } catch (error){

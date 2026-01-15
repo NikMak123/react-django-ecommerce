@@ -10,6 +10,7 @@ function CategoryButtons() {
   const { data: categories, loading, error } = useSelector(
     (state) => state.product.allCategories
   );
+console.log("Fetched categories:", categories);
 
   useEffect(() => {
     dispatch(fetchAllCategories());
