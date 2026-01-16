@@ -73,6 +73,9 @@ TEMPLATES = [
     },
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://react-django-ecommerce-production.up.railway.app",
+]
 
 
 # =========================
