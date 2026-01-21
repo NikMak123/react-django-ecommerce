@@ -186,7 +186,7 @@ export const fetchCategory = (category) => async (dispatch) => {
 export const fetchAllCategories = () => async (dispatch) => {
   try {
     dispatch(allCategoriesRequest());
-    const { data } = await axios.get('/api/products/categories/'); // your new endpoint
+    const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/api/products/categories/`); // your new endpoint
     dispatch(allCategoriesSuccess(data));
   } catch (error) {
     dispatch(allCategoriesFailure(error.response?.data.detail || error.message));
